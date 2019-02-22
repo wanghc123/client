@@ -4,6 +4,7 @@ package com.wanghongchun.client.client.proxy;
 import com.wanghongchun.client.client.ConnectManage;
 import com.wanghongchun.client.client.RPCFuture;
 import com.wanghongchun.client.client.RpcClientHandler;
+import com.wanghongchun.client.client.RpcService;
 import com.wanghongchun.client.protocol.RpcRequest;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -42,7 +43,8 @@ public class ObjectProxy<T> implements InvocationHandler, IAsyncObjectProxy {
 
         RpcRequest request = new RpcRequest();
         request.setRequestId(UUID.randomUUID().toString());
-        request.setClassName(method.getDeclaringClass().getName());
+        RpcService rpc = method.getDeclaringClass().getAnnotation(RpcService.class);
+        request.setClassName(rpc.value());
         request.setMethodName(method.getName());
         request.setParameterTypes(method.getParameterTypes());
         request.setParameters(args);

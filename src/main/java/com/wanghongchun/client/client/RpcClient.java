@@ -11,11 +11,6 @@ import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 
-/**
- * RPC Client（Create RPC proxy）
- *
- * @author luxiaoxun
- */
 public class RpcClient {
 
     //private String serverAddress;
